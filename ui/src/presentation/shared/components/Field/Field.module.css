@@ -1,0 +1,27 @@
+.field {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.field[data-grow='true'] {
+  flex: 1 1 260px;
+}
+
+.label {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.field > input,
+.field > select {
+  width: 100%;
+  font-size: 0.95rem;
+}
+
+.check {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+}

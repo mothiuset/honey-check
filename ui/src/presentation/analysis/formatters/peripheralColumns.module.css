@@ -1,0 +1,19 @@
+/* Nombre del aparato y, debajo, lo que hace: sin cajas, jerarquía por tipografía */
+.device {
+  display: grid;
+  gap: 2px;
+}
+
+.title {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.functions {
+  color: var(--muted);
+  font-size: 0.85rem;
+  white-space: normal;
+}

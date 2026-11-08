@@ -1,0 +1,11 @@
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 10px 14px;
+  margin: 12px 0 16px;
+}
+
+.toolbar[data-align='center'] {
+  align-items: center;
+}

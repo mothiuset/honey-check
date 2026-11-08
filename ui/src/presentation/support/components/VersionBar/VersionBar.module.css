@@ -1,0 +1,45 @@
+/* Una línea discreta sobre el resultado: no compite con el veredicto */
+.bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  margin: 18px 0 4px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.when {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.when > strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.versions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.versions > select {
+  min-height: 32px;
+  padding: 4px 8px;
+  font-size: 0.85rem;
+}
+
+/* Tras un cambio hecho en el panel: el resultado puede no reflejar el equipo */
+.stale {
+  flex-basis: 100%;
+  order: 3;
+  margin: 0;
+  color: var(--warn-ink);
+  font-size: 0.9rem;
+}

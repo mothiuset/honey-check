@@ -1,0 +1,83 @@
+/* Se copia con un clic; el cursor y un subrayado de puntos al pasar lo anuncian sin decorar */
+.copyable {
+  position: relative;
+  border-radius: 3px;
+  cursor: copy;
+  text-decoration-color: transparent;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.15s ease;
+}
+
+.copyable:hover {
+  text-decoration-color: var(--muted);
+}
+
+.copyable:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.text[data-mono] {
+  font-family: var(--paths);
+  font-size: 0.9em;
+  overflow-wrap: anywhere;
+}
+
+/* El contenedor no recorta: así el aviso «Copiado» se ve aunque el texto vaya recortado */
+.copyable {
+  display: inline-block;
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+/* Una sola línea con «…»; el valor completo está en el título y en lo que se copia */
+.text[data-truncate] {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+  white-space: nowrap;
+}
+
+/* Rutas: se recorta el principio y queda a la vista el final (carpeta y archivo) */
+.text[data-truncate='start'] {
+  direction: rtl;
+  text-align: left;
+}
+
+.text[data-truncate='start'] > bdi {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+.feedback:empty {
+  display: none;
+}
+
+.feedback {
+  position: absolute;
+  top: -1.7em;
+  left: 0;
+  z-index: 5;
+  padding: 1px 6px;
+  border-radius: 3px;
+  background: var(--action-bg);
+  color: var(--action-fg);
+  direction: ltr;
+  font: 600 0.72rem/1.4 var(--text);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.copyable[data-copied] {
+  text-decoration-color: var(--leaf);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .copyable {
+    transition: none;
+  }
+}

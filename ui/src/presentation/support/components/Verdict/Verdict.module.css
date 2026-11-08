@@ -1,0 +1,16 @@
+.verdict {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  max-width: 64ch;
+  margin: 20px 0 22px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.verdict > svg {
+  width: 1.4em;
+  height: 1.4em;
+  margin-top: 0.02em;
+}

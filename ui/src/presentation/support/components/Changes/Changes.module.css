@@ -1,0 +1,81 @@
+.changes {
+  margin: 8px 0 28px;
+}
+
+.changes > h3 {
+  margin-top: 0;
+}
+
+.none {
+  color: var(--muted);
+}
+
+.facts,
+.space {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.facts > li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  padding: 6px 0;
+  border-top: 1px solid var(--hairline);
+}
+
+.label {
+  min-width: 12rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.before,
+.after,
+.delta,
+.now {
+  font-family: var(--readout);
+  font-stretch: var(--readout-stretch);
+}
+
+.before {
+  color: var(--muted);
+  text-decoration: line-through;
+  text-decoration-color: var(--rule-strong);
+}
+
+.after {
+  font-weight: 600;
+}
+
+/* Ruta | cambio | tamaño actual: las cifras en columna, alineadas a la derecha */
+.space > li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 7rem 6rem;
+  align-items: baseline;
+  gap: 12px;
+  padding: 7px 0;
+  border-top: 1px solid var(--hairline);
+}
+
+.space > li:last-child,
+.facts > li:last-child {
+  border-bottom: 1px solid var(--hairline);
+}
+
+.delta {
+  font-weight: 600;
+  text-align: right;
+}
+
+/* Crecer no es malo ni bueno: se distingue con la tinta de aviso, sin alarmar */
+.space > li[data-grew] .delta {
+  color: var(--warn-ink);
+}
+
+.now {
+  color: var(--muted);
+  text-align: right;
+}

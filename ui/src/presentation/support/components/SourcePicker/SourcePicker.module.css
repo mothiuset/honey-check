@@ -1,0 +1,121 @@
+.picker {
+  flex: 1 1 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.help {
+  margin: 2px 0 6px;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.group {
+  margin-top: 10px;
+}
+
+/* El disco físico: su nombre y tipo encabezan sus particiones */
+.title {
+  margin: 0 0 2px;
+  font-family: var(--display);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  border-top: 1px solid var(--hairline);
+}
+
+.item:last-child {
+  border-bottom: 1px solid var(--hairline);
+}
+
+/* Casilla | nombre | detalle | barra de uso */
+.row {
+  display: grid;
+  grid-template-columns: auto minmax(7rem, 0.9fr) minmax(10rem, 1.6fr) minmax(
+      4rem,
+      1fr
+    );
+  align-items: center;
+  gap: 12px;
+  padding: 8px 4px;
+  cursor: pointer;
+}
+
+.row > input {
+  width: 1.05rem;
+  height: 1.05rem;
+  margin: 0;
+  accent-color: var(--honey-deep);
+}
+
+/* Lugar de la casilla en las filas que no se pueden elegir: mantiene la columna alineada */
+.box {
+  width: 1.05rem;
+}
+
+.name {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.detail {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.item[data-disabled] .row {
+  cursor: default;
+}
+
+.item[data-disabled] .name {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.bar {
+  width: 100%;
+  height: 6px;
+}
+
+.track {
+  fill: var(--hairline);
+}
+
+.fill {
+  fill: var(--honey-deep);
+}
+
+/* Casi llena: la barra lo dice en el color de falla */
+.bar[data-full] .fill {
+  fill: var(--oxide);
+}
+
+@media (max-width: 640px) {
+  .row {
+    grid-template-columns: auto 1fr;
+  }
+
+  .detail,
+  .bar {
+    grid-column: 2;
+  }
+}

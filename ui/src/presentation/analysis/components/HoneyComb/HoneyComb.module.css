@@ -1,0 +1,94 @@
+.comb {
+  display: block;
+  width: 100%;
+  max-width: 470px;
+  height: auto;
+}
+
+.hatchLight {
+  fill: #ffd86e;
+}
+
+.hatchDark {
+  fill: var(--honey);
+}
+
+.cell {
+  cursor: pointer;
+}
+
+.cell:focus-visible {
+  outline: none;
+}
+
+.cell:focus-visible .shape {
+  stroke: var(--focus);
+  stroke-width: 4;
+}
+
+.shape {
+  fill: var(--raised);
+  stroke: var(--rule-strong);
+  stroke-width: 2;
+  transition: fill 0.45s ease;
+}
+
+.glow {
+  fill: var(--honey);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.label {
+  fill: var(--ink);
+  font: 600 11.5px/1 var(--display);
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+.state {
+  fill: var(--ink);
+  font: 400 9.5px/1 var(--text);
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+.cell[data-status='ok'] .shape {
+  fill: var(--honey);
+  stroke: var(--honey-deep);
+}
+
+.cell[data-status='partial'] .shape {
+  fill: url(#partial-hatch);
+  stroke: var(--honey-deep);
+}
+
+.cell[data-status='ok'] .label,
+.cell[data-status='partial'] .label,
+.cell[data-status='partial'] .state {
+  fill: var(--propolis);
+}
+
+.cell[data-status='failed'] .shape,
+.cell[data-status='timeout'] .shape {
+  fill: var(--oxide-wash);
+  stroke: var(--oxide);
+  stroke-width: 3;
+}
+
+.cell[data-status='failed'] .label,
+.cell[data-status='failed'] .state,
+.cell[data-status='timeout'] .label,
+.cell[data-status='timeout'] .state {
+  fill: var(--oxide);
+}
+
+.cell[data-status='cancelled'] .shape {
+  stroke-dasharray: 4 4;
+}
+
+.cell[data-status='running'] .shape {
+  fill: var(--wax);
+  stroke: var(--honey-deep);
+  stroke-width: 3;
+}

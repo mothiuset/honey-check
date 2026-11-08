@@ -1,0 +1,10 @@
+# Los inventarios y logs contienen seriales, nombres de equipo y rutas: nunca se versionan.
+/honey-check_*.json
+/honey-check_*.json.tmp
+/logs/
+/build/
+/dist/
+/.venv/
+src/honey_check/_build_info.py
+/artifact/
+/src/honey_check/presentation/web/dist/

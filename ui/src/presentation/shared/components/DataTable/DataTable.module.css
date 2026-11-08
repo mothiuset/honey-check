@@ -1,0 +1,224 @@
+/* Sin marco ni filas alternadas: las filas se separan con una línea fina, como el resto.
+   La tabla tiene su propio desplazamiento: alto máximo según la ventana, encabezado fijo y la barra
+   horizontal siempre a la vista, sin tener que bajar al final ni agrandar la ventana. */
+.scroller {
+  max-height: max(18rem, calc(100vh - var(--status-height) - 10rem));
+  overflow: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.93rem;
+}
+
+.table th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 8px 12px 7px;
+  border-bottom: 1px solid var(--rule-strong);
+  background: var(--surface);
+  color: var(--muted);
+  font: 400 0.82rem/1.2 var(--text);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.table td,
+.table tbody th {
+  max-width: 28rem;
+  padding: 9px 12px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--hairline);
+  font-weight: 400;
+  text-align: left;
+  text-overflow: ellipsis;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+/* El detalle desplegado sí corre en varias líneas */
+.table tr[data-detail] > td {
+  max-width: none;
+  white-space: normal;
+}
+
+.table thead[data-hidden] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+/* Estado de una fila (comparaciones): un lavado suave y su color en la primera celda */
+.table tr[data-state='changed'] > * {
+  background: var(--amber-wash);
+}
+
+.table tr[data-state='added'] > * {
+  background: var(--leaf-wash);
+}
+
+.table tr[data-state='removed'] > * {
+  background: var(--oxide-wash);
+}
+
+.table tbody tr:not([data-detail]):hover td {
+  background: color-mix(in srgb, var(--wax) 55%, transparent);
+}
+
+/* Una línea por celda: un texto largo se recorta con «…» y se ve entero al pasar o al copiarlo */
+.table td [data-copy-text] {
+  display: inline-block;
+  max-width: 30rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+  white-space: nowrap;
+}
+
+/* Las cifras en la tipografía de lectura, alineadas por columna */
+.table td[data-align='end'] {
+  font-family: var(--readout);
+  font-stretch: var(--readout-stretch);
+  white-space: nowrap;
+}
+
+.table th:first-child,
+.table td:first-child {
+  padding-left: 4px;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.table [data-align='end'] {
+  text-align: right;
+}
+
+.table td[data-lead='true'] {
+  font-weight: 600;
+}
+
+.table tr[data-detail] > td {
+  padding: 14px 16px 18px 32px;
+  background: var(--surface-alt);
+  font-weight: 400;
+}
+
+.sort,
+.expand {
+  display: inline-flex;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.sort {
+  align-items: center;
+  gap: 6px;
+}
+
+.sortMark {
+  font-size: 0.7rem;
+  opacity: 0.55;
+}
+
+th[aria-sort='ascending'] .sortMark,
+th[aria-sort='descending'] .sortMark {
+  color: var(--ink);
+  opacity: 1;
+}
+
+.expand {
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.chevron {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  margin-top: 6px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+  transition: transform 0.15s ease;
+}
+
+.expand[aria-expanded='true'] .chevron {
+  transform: rotate(45deg);
+}
+
+@media (max-width: 1100px) {
+  .table [data-priority='3'] {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .table [data-priority='2'] {
+    display: none;
+  }
+}
+
+/* Móvil: cada fila es una línea; la primera celda en negrita y el resto a continuación. */
+@media (max-width: 560px) {
+  .table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .table,
+  .table tbody,
+  .table tr {
+    display: block;
+    width: 100%;
+  }
+
+  .table tr {
+    padding: 10px 2px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .table td {
+    display: inline;
+    white-space: normal;
+    margin-right: 14px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .table td[data-lead='true'] {
+    display: block;
+    margin: 0 0 2px;
+    color: var(--ink);
+    font-size: 0.93rem;
+  }
+
+  .table [data-align='end'] {
+    text-align: left;
+  }
+
+  .table tr[data-detail] > td {
+    display: block;
+    margin-top: 8px;
+    padding: 12px;
+    border-radius: var(--radius);
+    color: var(--ink);
+  }
+}

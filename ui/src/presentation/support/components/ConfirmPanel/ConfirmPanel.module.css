@@ -1,0 +1,89 @@
+.panel {
+  margin-block: 24px 8px;
+}
+
+.summary {
+  margin: 0 0 18px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.notes {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.notes > li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+  margin: 4px 0 14px;
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.backup {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.commands {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.commands > summary {
+  width: fit-content;
+  cursor: pointer;
+}
+
+.commands > ol {
+  display: grid;
+  gap: 10px;
+  margin: 10px 0 0;
+  padding-left: 1.4em;
+  color: var(--ink);
+}
+
+.commands > ol > li > span {
+  display: block;
+}
+
+.detail {
+  color: var(--muted);
+}
+
+.command {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.command > code {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 6px 10px;
+  border-radius: var(--radius);
+  background: var(--propolis);
+  color: var(--propolis-ink);
+  font-family: var(--paths);
+  font-size: 0.82rem;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}

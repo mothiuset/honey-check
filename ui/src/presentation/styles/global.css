@@ -1,0 +1,130 @@
+/* Estilos globales: base del navegador, tipografía de elementos y accesibilidad. Los componentes
+   tienen sus propios módulos CSS. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Barras de desplazamiento finas y discretas en toda la interfaz, sin carril visible: 6 px, que
+   se oscurecen al pasar el puntero. En Edge y Chrome manda ::-webkit-scrollbar; en Firefox, las
+   propiedades estándar (más gruesas, es lo que permite). */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 3px solid transparent;
+  border-radius: 10px;
+  background: var(--scroll-thumb) padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  border-width: 2px;
+  background-color: var(--muted);
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scroll-thumb) transparent;
+  }
+}
+
+html {
+  font-size: 16px;
+  /* Ningún desplazamiento por ancla o foco deja algo debajo de las barras fijas. */
+  scroll-padding-top: calc(var(--bar-height) + 12px);
+  scroll-padding-bottom: var(--status-height);
+}
+
+body {
+  margin: 0;
+  background: var(--surface);
+  color: var(--ink);
+  font: 400 1rem/1.5 var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-family: var(--display);
+  line-height: 1.15;
+}
+
+h1 {
+  font-size: 2.1rem;
+  font-weight: 700;
+}
+
+h2 {
+  margin: 36px 0 12px;
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+h2:focus {
+  outline: none;
+}
+
+h3 {
+  margin: 22px 0 8px;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+h4 {
+  margin: 14px 0 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+p {
+  max-width: 72ch;
+}
+
+a {
+  color: inherit;
+}
+
+input[type='search'],
+input[type='text'],
+select {
+  min-height: 38px;
+  padding: 7px 10px;
+  border: 1.5px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: var(--raised);
+  color: var(--ink);
+  font: inherit;
+}
+
+input[type='search']:focus,
+input[type='text']:focus,
+select:focus {
+  border-color: var(--honey-deep);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

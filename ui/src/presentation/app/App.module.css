@@ -1,0 +1,121 @@
+.skip {
+  position: absolute;
+  left: -999px;
+}
+
+.skip:focus {
+  top: 8px;
+  left: 8px;
+  z-index: 40;
+  padding: 8px 12px;
+  background: var(--surface);
+}
+
+.shell {
+  display: grid;
+  grid-template-columns: var(--rail-width) minmax(0, 1fr);
+  min-height: calc(100vh - var(--status-height));
+  /* La barra de estado es fija: el contenido reserva su alto y nunca queda debajo. */
+  padding-bottom: var(--status-height);
+}
+
+.rail {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - var(--status-height));
+  padding: 20px 0 14px;
+  background: var(--honey);
+  color: var(--propolis);
+}
+
+.menu {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  margin-top: 22px;
+  overflow-y: auto;
+}
+
+.foot {
+  display: grid;
+  gap: 8px;
+  margin-top: auto;
+  padding: 16px 20px 0;
+  font-size: 0.82rem;
+}
+
+.version {
+  line-height: 1.45;
+}
+
+.exit {
+  border-color: var(--propolis);
+  color: var(--propolis);
+}
+
+.workspace {
+  min-width: 0;
+}
+
+.main {
+  max-width: 1180px;
+  padding: 30px 36px 48px;
+}
+
+.main:focus {
+  outline: none;
+}
+
+.goodbye {
+  padding: 60px 40px;
+  font: 600 1.4rem/1.3 var(--display);
+}
+
+/* Barra compacta fija arriba; el contenido empieza debajo de ella (no la cubre nunca). */
+@media (max-width: 900px) {
+  .shell {
+    grid-template-columns: minmax(0, 1fr);
+    padding-top: var(--bar-height);
+  }
+
+  .rail {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 20;
+    height: var(--bar-height);
+    padding: 0;
+  }
+
+  .menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    max-height: calc(100vh - var(--bar-height) - var(--status-height));
+    margin: 0;
+    padding: 10px 0 14px;
+    background: var(--honey);
+    box-shadow: 0 10px 24px rgb(42 23 5 / 28%);
+  }
+
+  .rail[data-open='true'] .menu {
+    display: flex;
+  }
+
+  .foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 14px;
+    border-top: 1.5px solid rgb(42 23 5 / 20%);
+  }
+
+  .main {
+    padding: 22px 16px 40px;
+  }
+}

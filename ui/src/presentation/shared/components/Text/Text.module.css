@@ -1,0 +1,18 @@
+.lede {
+  margin: 4px 0 12px;
+  color: var(--muted);
+}
+
+.path {
+  font: 0.86rem/1.4 var(--paths);
+  overflow-wrap: anywhere;
+}
+
+.hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

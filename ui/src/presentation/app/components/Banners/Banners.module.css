@@ -1,0 +1,22 @@
+.banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  padding: 10px 36px;
+  border-bottom: 2px solid var(--oxide);
+  background: var(--oxide-wash);
+  color: var(--oxide);
+}
+
+.banner[data-tone='other'] {
+  border-bottom-color: var(--honey-deep);
+  background: var(--wax);
+  color: var(--ink);
+}
+
+@media (max-width: 900px) {
+  .banner {
+    padding: 10px 16px;
+  }
+}

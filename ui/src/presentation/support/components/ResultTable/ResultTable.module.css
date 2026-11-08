@@ -1,0 +1,26 @@
+.table {
+  margin-block: 18px;
+}
+
+.count {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.actions {
+  display: inline-flex;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.all {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+}
+
+.note {
+  color: var(--muted);
+  font-size: 0.88rem;
+}

@@ -1,0 +1,10 @@
+.toolbar,
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.toolbar {
+  margin-bottom: 10px;
+}

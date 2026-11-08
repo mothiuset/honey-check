@@ -1,0 +1,50 @@
+.picker {
+  padding: 14px 16px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-card);
+  background: var(--raised);
+}
+
+.title {
+  margin-top: 0;
+}
+
+.search {
+  width: 100%;
+}
+
+.chosen {
+  display: grid;
+  justify-items: start;
+  gap: 8px;
+}
+
+.sub {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.results {
+  margin: 8px 0 0;
+  padding: 0;
+  border-top: 1px solid var(--rule);
+  list-style: none;
+}
+
+.option {
+  display: grid;
+  width: 100%;
+  padding: 8px 4px;
+  border: 0;
+  border-bottom: 1px solid var(--rule);
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.option:hover,
+.option:focus-visible {
+  background: var(--wax);
+}

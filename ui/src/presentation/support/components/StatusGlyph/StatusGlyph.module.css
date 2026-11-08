@@ -1,0 +1,42 @@
+.glyph {
+  flex: 0 0 auto;
+  width: 1.35em;
+  height: 1.35em;
+}
+
+.glyph > polygon {
+  fill: var(--rule-strong);
+}
+
+.glyph > path {
+  fill: none;
+  stroke: var(--surface);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.glyph[data-status='ok'] > polygon {
+  fill: var(--leaf);
+}
+
+.glyph[data-status='warn'] > polygon {
+  fill: var(--honey);
+}
+
+.glyph[data-status='fail'] > polygon {
+  fill: var(--oxide);
+}
+
+/* Omitido: solo el contorno, no compite con lo que sí pasó */
+.glyph[data-status='skipped'] > polygon,
+.glyph[data-status='info'] > polygon {
+  fill: none;
+  stroke: var(--rule-strong);
+  stroke-width: 1.5;
+}
+
+.glyph[data-status='skipped'] > path,
+.glyph[data-status='info'] > path {
+  stroke: var(--muted);
+}

@@ -1,0 +1,91 @@
+.bar {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  height: var(--status-height);
+  padding: 0 8px;
+  overflow: hidden;
+  background: var(--propolis);
+  color: var(--propolis-ink);
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  height: 100%;
+  padding: 0 12px;
+  border-right: 1px solid rgb(246 235 217 / 18%);
+}
+
+.item:last-child {
+  border-right: 0;
+}
+
+.item[data-tone='viewing'] {
+  background: var(--honey);
+  color: var(--propolis);
+}
+
+.item[data-role='folder'] {
+  flex: 1;
+}
+
+.label {
+  opacity: 0.68;
+}
+
+.name,
+.path {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.path {
+  font: 0.78rem var(--paths);
+}
+
+.pill {
+  padding: 0 6px;
+  border-radius: 999px;
+  background: rgb(127 127 127 / 22%);
+  font-size: 0.75rem;
+}
+
+.link {
+  padding: 2px 6px;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.link:hover {
+  background: rgb(246 235 217 / 12%);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #7fd69a;
+}
+
+/* En pantallas estrechas se conserva lo esencial: el equipo, lo que se ve y los permisos. */
+@media (max-width: 760px) {
+  .item[data-role='folder'],
+  .label {
+    display: none;
+  }
+
+  .item {
+    padding: 0 8px;
+  }
+}

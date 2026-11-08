@@ -1,0 +1,79 @@
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  padding: 14px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-card);
+  background: var(--raised);
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.head > h3 {
+  margin: 0;
+}
+
+.description {
+  margin: 0;
+  color: var(--muted);
+}
+
+.steps {
+  margin: 8px 0 0;
+  padding-left: 1.4em;
+}
+
+.steps > li {
+  margin-block: 3px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.editor {
+  margin-block: 16px;
+  padding: 14px;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-card);
+  background: var(--surface-alt);
+}
+
+.kinds {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 4px 16px;
+  margin: 8px 0 12px;
+  font-size: 0.85rem;
+}
+
+.kinds dt {
+  font-family: var(--paths);
+}
+
+.kinds dd {
+  margin: 0 0 4px;
+  color: var(--muted);
+}
+
+.json {
+  width: 100%;
+  font-family: var(--paths);
+  font-size: 0.85rem;
+}

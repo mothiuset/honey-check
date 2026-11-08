@@ -1,0 +1,24 @@
+.dialog {
+  max-width: min(480px, calc(100vw - 32px));
+  padding: 22px 24px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-card);
+  background: var(--raised);
+  color: var(--ink);
+  box-shadow: var(--shadow);
+}
+
+.dialog::backdrop {
+  background: var(--scrim);
+}
+
+.title {
+  margin: 0 0 8px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 18px;
+}

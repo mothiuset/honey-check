@@ -1,0 +1,21 @@
+/* Un aviso sin el borde lateral grueso: un fondo apenas distinto y líneas finas arriba y abajo.
+   El tono malo se dice con su lavado y el color del texto de apoyo, no con un marco. */
+.notice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  margin: 14px 0;
+  padding: 10px 14px;
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+  background: var(--surface-alt);
+}
+
+.notice[data-tone='bad'] {
+  background: var(--oxide-wash);
+}
+
+.notice > p {
+  margin: 0;
+}

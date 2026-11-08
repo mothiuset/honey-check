@@ -1,0 +1,84 @@
+.groups,
+.list,
+.sub {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.group + .group {
+  margin-top: 18px;
+}
+
+.groupLabel {
+  display: block;
+  padding: 0 20px 4px;
+  color: rgb(42 23 5 / 72%);
+  font-size: 0.78rem;
+}
+
+.item,
+.parent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px 20px;
+  border: 0;
+  background: transparent;
+  color: var(--propolis);
+  font: 500 1rem/1.25 var(--display);
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.item:hover,
+.parent:hover,
+.subLink:hover {
+  background: rgb(42 23 5 / 10%);
+}
+
+.item[aria-current='page'] {
+  background: var(--propolis);
+  color: var(--honey);
+}
+
+.parent[data-active='true'] {
+  box-shadow: inset 4px 0 0 var(--propolis);
+  font-weight: 700;
+}
+
+.parent::after {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translate(-2px, -2px);
+  transition: transform 0.15s ease;
+}
+
+.parent[aria-expanded='false']::after {
+  transform: rotate(-45deg);
+}
+
+.subLink {
+  display: block;
+  padding: 5px 20px 5px 34px;
+  color: var(--propolis);
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.subLink[aria-current='page'] {
+  box-shadow: inset 4px 0 0 var(--propolis);
+  font-weight: 600;
+}
+
+.item:focus-visible,
+.parent:focus-visible,
+.subLink:focus-visible {
+  outline-color: var(--propolis);
+  outline-offset: -3px;
+}

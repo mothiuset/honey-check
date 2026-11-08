@@ -1,0 +1,20 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px 24px;
+  margin: 0;
+}
+
+.entry[data-wide='true'] {
+  grid-column: 1 / -1;
+}
+
+.label {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.value {
+  margin: 2px 0 0;
+  overflow-wrap: anywhere;
+}

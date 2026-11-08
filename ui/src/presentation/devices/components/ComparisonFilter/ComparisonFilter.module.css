@@ -1,0 +1,33 @@
+.switch {
+  display: inline-flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  border: 1.5px solid var(--rule-strong);
+  border-radius: var(--radius);
+}
+
+.option {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 0;
+  border-right: 1px solid var(--rule-strong);
+  background: var(--raised);
+  color: var(--ink);
+  font: 600 0.92rem/1.1 var(--display);
+  cursor: pointer;
+}
+
+.option:last-child {
+  border-right: 0;
+}
+
+.option[aria-pressed='true'] {
+  background: var(--propolis);
+  color: var(--honey);
+}
+
+.count {
+  font-variant-numeric: tabular-nums;
+}

@@ -1,0 +1,1 @@
+export { PeripheralsPage } from './PeripheralsPage'

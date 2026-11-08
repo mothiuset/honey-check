@@ -1,0 +1,107 @@
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 20px;
+  color: inherit;
+  font: 700 1.4rem/1 var(--display);
+  text-decoration: none;
+}
+
+.current,
+.toggle {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .bar {
+    min-height: var(--bar-height);
+    padding-right: 12px;
+  }
+
+  .brand {
+    padding: 0 14px;
+    font-size: 1.2rem;
+  }
+
+  .logo {
+    width: 28px;
+    height: 28px;
+  }
+
+  .current {
+    display: block;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    padding-left: 12px;
+    border-left: 1.5px solid rgb(42 23 5 / 35%);
+    font: 600 1rem/1.15 var(--display);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .group {
+    display: block;
+    color: rgb(42 23 5 / 75%);
+    font: 400 0.72rem/1.1 var(--text);
+  }
+
+  .toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border: 1.5px solid var(--propolis);
+    border-radius: var(--radius);
+    background: transparent;
+    color: var(--propolis);
+    font: 600 0.95rem/1 var(--display);
+    cursor: pointer;
+  }
+
+  .toggle[aria-expanded='true'] {
+    background: var(--propolis);
+    color: var(--honey);
+  }
+
+  .icon,
+  .icon::before,
+  .icon::after {
+    display: block;
+    width: 16px;
+    height: 2px;
+    background: currentColor;
+  }
+
+  .icon {
+    position: relative;
+  }
+
+  .icon::before,
+  .icon::after {
+    content: '';
+    position: absolute;
+    left: 0;
+  }
+
+  .icon::before {
+    top: -5px;
+  }
+
+  .icon::after {
+    top: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .group {
+    display: none;
+  }
+}

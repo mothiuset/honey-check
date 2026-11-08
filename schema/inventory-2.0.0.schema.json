@@ -1,0 +1,2486 @@
+{
+  "$defs": {
+    "Baseboard": {
+      "additionalProperties": false,
+      "properties": {
+        "manufacturer": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "product": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "serialNumber": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "version": {
+          "$ref": "#/$defs/Observed_str_"
+        }
+      },
+      "required": [
+        "manufacturer",
+        "product",
+        "serialNumber",
+        "version"
+      ],
+      "title": "Baseboard",
+      "type": "object"
+    },
+    "Battery": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "manufacturer": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "chemistry": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "chargePercent": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "status": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "designCapacityMwh": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "fullChargeCapacityMwh": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "healthPercent": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "cycleCount": {
+          "$ref": "#/$defs/Observed_int_"
+        }
+      },
+      "required": [
+        "name",
+        "manufacturer",
+        "chemistry",
+        "chargePercent",
+        "status",
+        "designCapacityMwh",
+        "fullChargeCapacityMwh",
+        "healthPercent",
+        "cycleCount"
+      ],
+      "title": "Battery",
+      "type": "object"
+    },
+    "BatterySection": {
+      "additionalProperties": false,
+      "properties": {
+        "present": {
+          "title": "Present",
+          "type": "boolean"
+        },
+        "batteries": {
+          "items": {
+            "$ref": "#/$defs/Battery"
+          },
+          "title": "Batteries",
+          "type": "array"
+        }
+      },
+      "required": [
+        "present",
+        "batteries"
+      ],
+      "title": "BatterySection",
+      "type": "object"
+    },
+    "CollectionInfo": {
+      "additionalProperties": false,
+      "properties": {
+        "inventoryId": {
+          "title": "Inventoryid",
+          "type": "string"
+        },
+        "startedAt": {
+          "format": "date-time",
+          "title": "Startedat",
+          "type": "string"
+        },
+        "finishedAt": {
+          "format": "date-time",
+          "title": "Finishedat",
+          "type": "string"
+        },
+        "durationMs": {
+          "minimum": 0,
+          "title": "Durationms",
+          "type": "integer"
+        },
+        "appVersion": {
+          "title": "Appversion",
+          "type": "string"
+        },
+        "appCommit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Appcommit"
+        },
+        "status": {
+          "$ref": "#/$defs/CollectionStatus"
+        },
+        "isElevated": {
+          "$ref": "#/$defs/Observed_bool_"
+        },
+        "deviceKey": {
+          "title": "Devicekey",
+          "type": "string"
+        },
+        "identityBasis": {
+          "title": "Identitybasis",
+          "type": "string"
+        },
+        "sequence": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sequence"
+        },
+        "previousInventoryId": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Previousinventoryid"
+        }
+      },
+      "required": [
+        "inventoryId",
+        "startedAt",
+        "finishedAt",
+        "durationMs",
+        "appVersion",
+        "appCommit",
+        "status",
+        "isElevated",
+        "deviceKey",
+        "identityBasis"
+      ],
+      "title": "CollectionInfo",
+      "type": "object"
+    },
+    "CollectionStatus": {
+      "enum": [
+        "complete",
+        "partial"
+      ],
+      "title": "CollectionStatus",
+      "type": "string"
+    },
+    "Confidence": {
+      "enum": [
+        "verified",
+        "reported",
+        "inferred",
+        "probable",
+        "unknown"
+      ],
+      "title": "Confidence",
+      "type": "string"
+    },
+    "DefenderStatus": {
+      "additionalProperties": false,
+      "properties": {
+        "antivirusEnabled": {
+          "$ref": "#/$defs/Observed_bool_"
+        },
+        "realTimeProtection": {
+          "$ref": "#/$defs/Observed_bool_"
+        },
+        "runningMode": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "signatureUpdatedAt": {
+          "$ref": "#/$defs/Observed_datetime_"
+        }
+      },
+      "required": [
+        "antivirusEnabled",
+        "realTimeProtection",
+        "runningMode",
+        "signatureUpdatedAt"
+      ],
+      "title": "DefenderStatus",
+      "type": "object"
+    },
+    "DetectionMechanism": {
+      "enum": [
+        "registry_uninstall",
+        "appx_package"
+      ],
+      "title": "DetectionMechanism",
+      "type": "string"
+    },
+    "DeviceIdentity": {
+      "additionalProperties": false,
+      "properties": {
+        "hostname": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "manufacturer": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "model": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "serialNumber": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "systemUuid": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "sku": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "assetTag": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "deviceType": {
+          "$ref": "#/$defs/Observed_DeviceType_"
+        },
+        "systemArchitecture": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "baseboard": {
+          "$ref": "#/$defs/Baseboard"
+        },
+        "firmware": {
+          "$ref": "#/$defs/Firmware"
+        },
+        "membership": {
+          "$ref": "#/$defs/DomainMembership"
+        }
+      },
+      "required": [
+        "hostname",
+        "manufacturer",
+        "model",
+        "serialNumber",
+        "systemUuid",
+        "sku",
+        "assetTag",
+        "deviceType",
+        "systemArchitecture",
+        "baseboard",
+        "firmware",
+        "membership"
+      ],
+      "title": "DeviceIdentity",
+      "type": "object"
+    },
+    "DeviceType": {
+      "enum": [
+        "desktop",
+        "laptop",
+        "tablet",
+        "all_in_one",
+        "mini_pc",
+        "server",
+        "workstation",
+        "virtual_machine",
+        "other"
+      ],
+      "title": "DeviceType",
+      "type": "string"
+    },
+    "DevicesSection": {
+      "additionalProperties": false,
+      "properties": {
+        "totalCount": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "problemCount": {
+          "minimum": 0,
+          "title": "Problemcount",
+          "type": "integer"
+        },
+        "problems": {
+          "items": {
+            "$ref": "#/$defs/ProblemDevice"
+          },
+          "title": "Problems",
+          "type": "array"
+        }
+      },
+      "required": [
+        "totalCount",
+        "problemCount",
+        "problems"
+      ],
+      "title": "DevicesSection",
+      "type": "object"
+    },
+    "DiskBus": {
+      "enum": [
+        "nvme",
+        "sata",
+        "ata",
+        "sas",
+        "scsi",
+        "raid",
+        "usb",
+        "sd",
+        "mmc",
+        "firewire",
+        "fibre_channel",
+        "iscsi",
+        "virtual",
+        "file_backed_virtual",
+        "storage_spaces",
+        "unknown"
+      ],
+      "title": "DiskBus",
+      "type": "string"
+    },
+    "DiskKind": {
+      "enum": [
+        "hdd",
+        "ssd_sata",
+        "ssd_nvme",
+        "ssd_sas",
+        "ssd_other",
+        "emmc"
+      ],
+      "title": "DiskKind",
+      "type": "string"
+    },
+    "DisplayMode": {
+      "additionalProperties": false,
+      "properties": {
+        "device": {
+          "title": "Device",
+          "type": "string"
+        },
+        "isPrimary": {
+          "title": "Isprimary",
+          "type": "boolean"
+        },
+        "widthPixels": {
+          "exclusiveMinimum": 0,
+          "title": "Widthpixels",
+          "type": "integer"
+        },
+        "heightPixels": {
+          "exclusiveMinimum": 0,
+          "title": "Heightpixels",
+          "type": "integer"
+        },
+        "refreshHz": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Refreshhz"
+        }
+      },
+      "required": [
+        "device",
+        "isPrimary",
+        "widthPixels",
+        "heightPixels",
+        "refreshHz"
+      ],
+      "title": "DisplayMode",
+      "type": "object"
+    },
+    "DisplaySection": {
+      "additionalProperties": false,
+      "properties": {
+        "monitors": {
+          "items": {
+            "$ref": "#/$defs/Monitor"
+          },
+          "title": "Monitors",
+          "type": "array"
+        },
+        "activeModes": {
+          "items": {
+            "$ref": "#/$defs/DisplayMode"
+          },
+          "title": "Activemodes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "monitors",
+        "activeModes"
+      ],
+      "title": "DisplaySection",
+      "type": "object"
+    },
+    "DomainMembership": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "name": {
+          "$ref": "#/$defs/Observed_str_"
+        }
+      },
+      "required": [
+        "kind",
+        "name"
+      ],
+      "title": "DomainMembership",
+      "type": "object"
+    },
+    "ExcludedDisk": {
+      "additionalProperties": false,
+      "description": "Se conserva como evidencia de la exclusión, sin serial.",
+      "properties": {
+        "model": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Model"
+        },
+        "bus": {
+          "$ref": "#/$defs/DiskBus"
+        },
+        "reason": {
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "model",
+        "bus",
+        "reason"
+      ],
+      "title": "ExcludedDisk",
+      "type": "object"
+    },
+    "ExecutableDetails": {
+      "additionalProperties": false,
+      "properties": {
+        "fileVersion": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Fileversion"
+        },
+        "productVersion": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Productversion"
+        },
+        "productName": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Productname"
+        },
+        "fileDescription": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Filedescription"
+        },
+        "companyName": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Companyname"
+        },
+        "signature": {
+          "$ref": "#/$defs/ExecutableSignature",
+          "default": {
+            "status": "not_checked",
+            "signer": null,
+            "reason": "not_checked"
+          }
+        }
+      },
+      "title": "ExecutableDetails",
+      "type": "object"
+    },
+    "ExecutableSignature": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/SignatureStatus"
+        },
+        "signer": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Signer"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reason"
+        }
+      },
+      "required": [
+        "status"
+      ],
+      "title": "ExecutableSignature",
+      "type": "object"
+    },
+    "FirewallProfile": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "enabled": {
+          "$ref": "#/$defs/Observed_bool_"
+        }
+      },
+      "required": [
+        "name",
+        "enabled"
+      ],
+      "title": "FirewallProfile",
+      "type": "object"
+    },
+    "Firmware": {
+      "additionalProperties": false,
+      "properties": {
+        "vendor": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "version": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "smbiosVersion": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "releaseDate": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "mode": {
+          "$ref": "#/$defs/Observed_str_"
+        }
+      },
+      "required": [
+        "vendor",
+        "version",
+        "smbiosVersion",
+        "releaseDate",
+        "mode"
+      ],
+      "title": "Firmware",
+      "type": "object"
+    },
+    "GraphicsAdapter": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "vendor": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "driverVersion": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "driverDate": {
+          "$ref": "#/$defs/Observed_datetime_"
+        },
+        "memoryBytes": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "currentWidthPixels": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "currentHeightPixels": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "currentRefreshHz": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "status": {
+          "$ref": "#/$defs/Observed_str_"
+        }
+      },
+      "required": [
+        "name",
+        "vendor",
+        "driverVersion",
+        "driverDate",
+        "memoryBytes",
+        "currentWidthPixels",
+        "currentHeightPixels",
+        "currentRefreshHz",
+        "status"
+      ],
+      "title": "GraphicsAdapter",
+      "type": "object"
+    },
+    "GraphicsSection": {
+      "additionalProperties": false,
+      "properties": {
+        "adapters": {
+          "items": {
+            "$ref": "#/$defs/GraphicsAdapter"
+          },
+          "title": "Adapters",
+          "type": "array"
+        }
+      },
+      "required": [
+        "adapters"
+      ],
+      "title": "GraphicsSection",
+      "type": "object"
+    },
+    "HardwareSection": {
+      "additionalProperties": false,
+      "properties": {
+        "processor": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ProcessorSection"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "memory": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MemorySection"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "storage": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/StorageSection"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "graphics": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/GraphicsSection"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "displays": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/DisplaySection"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "network": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/NetworkSection"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "battery": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BatterySection"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "tpm": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TpmSection"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "processor",
+        "memory",
+        "storage",
+        "graphics",
+        "displays",
+        "network",
+        "battery",
+        "tpm"
+      ],
+      "title": "HardwareSection",
+      "type": "object"
+    },
+    "HotFix": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Description"
+        },
+        "installedOnRaw": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Installedonraw"
+        }
+      },
+      "required": [
+        "id",
+        "description",
+        "installedOnRaw"
+      ],
+      "title": "HotFix",
+      "type": "object"
+    },
+    "InstallerType": {
+      "enum": [
+        "msi",
+        "traditional",
+        "msix",
+        "other",
+        "unknown"
+      ],
+      "title": "InstallerType",
+      "type": "string"
+    },
+    "Issue": {
+      "additionalProperties": false,
+      "properties": {
+        "module": {
+          "title": "Module",
+          "type": "string"
+        },
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source"
+        }
+      },
+      "required": [
+        "module",
+        "code",
+        "message"
+      ],
+      "title": "Issue",
+      "type": "object"
+    },
+    "MemoryModule": {
+      "additionalProperties": false,
+      "properties": {
+        "capacityBytes": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "memoryType": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "speedMts": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "configuredSpeedMts": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "manufacturer": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "partNumber": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "serialNumber": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "slot": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "bank": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "formFactor": {
+          "$ref": "#/$defs/Observed_str_"
+        }
+      },
+      "required": [
+        "capacityBytes",
+        "memoryType",
+        "speedMts",
+        "configuredSpeedMts",
+        "manufacturer",
+        "partNumber",
+        "serialNumber",
+        "slot",
+        "bank",
+        "formFactor"
+      ],
+      "title": "MemoryModule",
+      "type": "object"
+    },
+    "MemorySection": {
+      "additionalProperties": false,
+      "properties": {
+        "installedBytes": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "visibleToOsBytes": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "moduleCount": {
+          "minimum": 0,
+          "title": "Modulecount",
+          "type": "integer"
+        },
+        "modules": {
+          "items": {
+            "$ref": "#/$defs/MemoryModule"
+          },
+          "title": "Modules",
+          "type": "array"
+        },
+        "totalSlots": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "freeSlots": {
+          "$ref": "#/$defs/Observed_int_"
+        }
+      },
+      "required": [
+        "installedBytes",
+        "visibleToOsBytes",
+        "moduleCount",
+        "modules",
+        "totalSlots",
+        "freeSlots"
+      ],
+      "title": "MemorySection",
+      "type": "object"
+    },
+    "ModuleReport": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/ModuleStatus"
+        },
+        "durationMs": {
+          "minimum": 0,
+          "title": "Durationms",
+          "type": "integer"
+        },
+        "retries": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Retries",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "name",
+        "status",
+        "durationMs"
+      ],
+      "title": "ModuleReport",
+      "type": "object"
+    },
+    "ModuleStatus": {
+      "enum": [
+        "ok",
+        "partial",
+        "failed",
+        "timeout",
+        "cancelled"
+      ],
+      "title": "ModuleStatus",
+      "type": "string"
+    },
+    "Monitor": {
+      "additionalProperties": false,
+      "properties": {
+        "manufacturerCode": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "model": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "serialNumber": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "yearOfManufacture": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "isActive": {
+          "$ref": "#/$defs/Observed_bool_"
+        }
+      },
+      "required": [
+        "manufacturerCode",
+        "model",
+        "serialNumber",
+        "yearOfManufacture",
+        "isActive"
+      ],
+      "title": "Monitor",
+      "type": "object"
+    },
+    "NetworkAdapter": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "description": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "manufacturer": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "macAddress": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "connection": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "linkSpeedBitsPerSecond": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "driverVersion": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "ipv4Addresses": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Ipv4Addresses",
+          "type": "array"
+        }
+      },
+      "required": [
+        "name",
+        "description",
+        "manufacturer",
+        "macAddress",
+        "connection",
+        "linkSpeedBitsPerSecond",
+        "driverVersion",
+        "ipv4Addresses"
+      ],
+      "title": "NetworkAdapter",
+      "type": "object"
+    },
+    "NetworkSection": {
+      "additionalProperties": false,
+      "properties": {
+        "adapters": {
+          "items": {
+            "$ref": "#/$defs/NetworkAdapter"
+          },
+          "title": "Adapters",
+          "type": "array"
+        },
+        "detectionSource": {
+          "title": "Detectionsource",
+          "type": "string"
+        }
+      },
+      "required": [
+        "adapters",
+        "detectionSource"
+      ],
+      "title": "NetworkSection",
+      "type": "object"
+    },
+    "Observed_DeviceType_": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/DeviceType"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "confidence": {
+          "$ref": "#/$defs/Confidence",
+          "default": "unknown"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reason"
+        },
+        "raw": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Raw"
+        }
+      },
+      "title": "Observed[DeviceType]",
+      "type": "object"
+    },
+    "Observed_DiskKind_": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/DiskKind"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "confidence": {
+          "$ref": "#/$defs/Confidence",
+          "default": "unknown"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reason"
+        },
+        "raw": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Raw"
+        }
+      },
+      "title": "Observed[DiskKind]",
+      "type": "object"
+    },
+    "Observed_bool_": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "confidence": {
+          "$ref": "#/$defs/Confidence",
+          "default": "unknown"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reason"
+        },
+        "raw": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Raw"
+        }
+      },
+      "title": "Observed[bool]",
+      "type": "object"
+    },
+    "Observed_datetime_": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "confidence": {
+          "$ref": "#/$defs/Confidence",
+          "default": "unknown"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reason"
+        },
+        "raw": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Raw"
+        }
+      },
+      "title": "Observed[datetime]",
+      "type": "object"
+    },
+    "Observed_int_": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "confidence": {
+          "$ref": "#/$defs/Confidence",
+          "default": "unknown"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reason"
+        },
+        "raw": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Raw"
+        }
+      },
+      "title": "Observed[int]",
+      "type": "object"
+    },
+    "Observed_str_": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "confidence": {
+          "$ref": "#/$defs/Confidence",
+          "default": "unknown"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reason"
+        },
+        "raw": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Raw"
+        }
+      },
+      "title": "Observed[str]",
+      "type": "object"
+    },
+    "OperatingSystem": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "generation": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "editionId": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "isLtsc": {
+          "$ref": "#/$defs/Observed_bool_"
+        },
+        "displayVersion": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "version": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "build": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "ubr": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "fullBuild": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "architecture": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "installedAt": {
+          "$ref": "#/$defs/Observed_datetime_"
+        },
+        "lastBootAt": {
+          "$ref": "#/$defs/Observed_datetime_"
+        },
+        "locale": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "hotfixCount": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "hotfixes": {
+          "items": {
+            "$ref": "#/$defs/HotFix"
+          },
+          "title": "Hotfixes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "name",
+        "generation",
+        "editionId",
+        "isLtsc",
+        "displayVersion",
+        "version",
+        "build",
+        "ubr",
+        "fullBuild",
+        "architecture",
+        "installedAt",
+        "lastBootAt",
+        "locale",
+        "hotfixCount",
+        "hotfixes"
+      ],
+      "title": "OperatingSystem",
+      "type": "object"
+    },
+    "Partition": {
+      "additionalProperties": false,
+      "properties": {
+        "number": {
+          "title": "Number",
+          "type": "integer"
+        },
+        "driveLetter": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Driveletter"
+        },
+        "sizeBytes": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "kind": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Kind"
+        },
+        "volume": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Volume"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "number",
+        "driveLetter",
+        "sizeBytes",
+        "kind",
+        "volume"
+      ],
+      "title": "Partition",
+      "type": "object"
+    },
+    "PathEvidence": {
+      "additionalProperties": false,
+      "description": "Ruta con procedencia y con el resultado de comprobarla en el disco.",
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "confidence": {
+          "$ref": "#/$defs/Confidence",
+          "default": "unknown"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source"
+        },
+        "state": {
+          "$ref": "#/$defs/PathState",
+          "default": "not_provided"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reason"
+        }
+      },
+      "title": "PathEvidence",
+      "type": "object"
+    },
+    "PathState": {
+      "enum": [
+        "valid",
+        "missing",
+        "inaccessible",
+        "not_provided",
+        "not_checked"
+      ],
+      "title": "PathState",
+      "type": "string"
+    },
+    "PhysicalDisk": {
+      "additionalProperties": false,
+      "properties": {
+        "number": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "manufacturer": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "model": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "serialNumber": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "capacityBytes": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "kind": {
+          "$ref": "#/$defs/Observed_DiskKind_"
+        },
+        "bus": {
+          "$ref": "#/$defs/DiskBus"
+        },
+        "isBootDisk": {
+          "$ref": "#/$defs/Observed_bool_"
+        },
+        "health": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "partitions": {
+          "items": {
+            "$ref": "#/$defs/Partition"
+          },
+          "title": "Partitions",
+          "type": "array"
+        }
+      },
+      "required": [
+        "number",
+        "manufacturer",
+        "model",
+        "serialNumber",
+        "capacityBytes",
+        "kind",
+        "bus",
+        "isBootDisk",
+        "health",
+        "partitions"
+      ],
+      "title": "PhysicalDisk",
+      "type": "object"
+    },
+    "ProblemDevice": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "deviceClass": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "manufacturer": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "deviceId": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Deviceid"
+        },
+        "errorCode": {
+          "title": "Errorcode",
+          "type": "integer"
+        },
+        "errorDescription": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Errordescription"
+        },
+        "status": {
+          "$ref": "#/$defs/Observed_str_"
+        }
+      },
+      "required": [
+        "name",
+        "deviceClass",
+        "manufacturer",
+        "deviceId",
+        "errorCode",
+        "errorDescription",
+        "status"
+      ],
+      "title": "ProblemDevice",
+      "type": "object"
+    },
+    "Processor": {
+      "additionalProperties": false,
+      "properties": {
+        "manufacturer": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "model": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "architecture": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "physicalCores": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "logicalProcessors": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "maxFrequencyMhz": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "socket": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "addressWidthBits": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "l2CacheKib": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "l3CacheKib": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "virtualizationFirmwareEnabled": {
+          "$ref": "#/$defs/Observed_bool_"
+        }
+      },
+      "required": [
+        "manufacturer",
+        "model",
+        "architecture",
+        "physicalCores",
+        "logicalProcessors",
+        "maxFrequencyMhz",
+        "socket",
+        "addressWidthBits",
+        "l2CacheKib",
+        "l3CacheKib",
+        "virtualizationFirmwareEnabled"
+      ],
+      "title": "Processor",
+      "type": "object"
+    },
+    "ProcessorSection": {
+      "additionalProperties": false,
+      "properties": {
+        "processors": {
+          "items": {
+            "$ref": "#/$defs/Processor"
+          },
+          "title": "Processors",
+          "type": "array"
+        },
+        "totalPhysicalCores": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "totalLogicalProcessors": {
+          "$ref": "#/$defs/Observed_int_"
+        }
+      },
+      "required": [
+        "processors",
+        "totalPhysicalCores",
+        "totalLogicalProcessors"
+      ],
+      "title": "ProcessorSection",
+      "type": "object"
+    },
+    "SchemaInfo": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "default": "honey-check.inventory",
+          "title": "Name",
+          "type": "string"
+        },
+        "version": {
+          "default": "2.0.0",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "title": "SchemaInfo",
+      "type": "object"
+    },
+    "SecurityProduct": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "enabled": {
+          "$ref": "#/$defs/Observed_bool_"
+        },
+        "upToDate": {
+          "$ref": "#/$defs/Observed_bool_"
+        },
+        "executablePath": {
+          "$ref": "#/$defs/Observed_str_"
+        }
+      },
+      "required": [
+        "name",
+        "enabled",
+        "upToDate",
+        "executablePath"
+      ],
+      "title": "SecurityProduct",
+      "type": "object"
+    },
+    "SecuritySection": {
+      "additionalProperties": false,
+      "properties": {
+        "antivirus": {
+          "items": {
+            "$ref": "#/$defs/SecurityProduct"
+          },
+          "title": "Antivirus",
+          "type": "array"
+        },
+        "antivirusStatus": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "defender": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/DefenderStatus"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "firewallProfiles": {
+          "items": {
+            "$ref": "#/$defs/FirewallProfile"
+          },
+          "title": "Firewallprofiles",
+          "type": "array"
+        },
+        "secureBootEnabled": {
+          "$ref": "#/$defs/Observed_bool_"
+        },
+        "virtualizationBasedSecurity": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "memoryIntegrityRunning": {
+          "$ref": "#/$defs/Observed_bool_"
+        },
+        "codeIntegrityPolicy": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "uacEnabled": {
+          "$ref": "#/$defs/Observed_bool_"
+        },
+        "powershellLanguageMode": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "volumeEncryption": {
+          "items": {
+            "$ref": "#/$defs/VolumeEncryption"
+          },
+          "title": "Volumeencryption",
+          "type": "array"
+        },
+        "volumeEncryptionStatus": {
+          "$ref": "#/$defs/Observed_str_"
+        }
+      },
+      "required": [
+        "antivirus",
+        "antivirusStatus",
+        "defender",
+        "firewallProfiles",
+        "secureBootEnabled",
+        "virtualizationBasedSecurity",
+        "memoryIntegrityRunning",
+        "codeIntegrityPolicy",
+        "uacEnabled",
+        "powershellLanguageMode",
+        "volumeEncryption",
+        "volumeEncryptionStatus"
+      ],
+      "title": "SecuritySection",
+      "type": "object"
+    },
+    "SignatureStatus": {
+      "enum": [
+        "valid",
+        "not_signed",
+        "hash_mismatch",
+        "not_trusted",
+        "unknown_error",
+        "not_supported",
+        "not_checked"
+      ],
+      "title": "SignatureStatus",
+      "type": "string"
+    },
+    "SoftwareItem": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "version": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "publisher": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "scope": {
+          "$ref": "#/$defs/SoftwareScope"
+        },
+        "installerType": {
+          "$ref": "#/$defs/InstallerType"
+        },
+        "mechanism": {
+          "$ref": "#/$defs/DetectionMechanism"
+        },
+        "detectionSource": {
+          "title": "Detectionsource",
+          "type": "string"
+        },
+        "installPath": {
+          "$ref": "#/$defs/PathEvidence"
+        },
+        "executablePath": {
+          "$ref": "#/$defs/PathEvidence"
+        },
+        "uninstall": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/UninstallReference"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "installDate": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "architecture": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "sizeBytes": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "executable": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExecutableDetails"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "packageFullName": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Packagefullname"
+        },
+        "packageSignatureKind": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Packagesignaturekind"
+        },
+        "isSystemComponent": {
+          "default": false,
+          "title": "Issystemcomponent",
+          "type": "boolean"
+        },
+        "isFramework": {
+          "default": false,
+          "title": "Isframework",
+          "type": "boolean"
+        },
+        "isUpdate": {
+          "default": false,
+          "title": "Isupdate",
+          "type": "boolean"
+        },
+        "iconId": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{16}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Iconid"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "version",
+        "publisher",
+        "scope",
+        "installerType",
+        "mechanism",
+        "detectionSource",
+        "installPath",
+        "executablePath",
+        "uninstall",
+        "installDate",
+        "architecture",
+        "sizeBytes",
+        "executable"
+      ],
+      "title": "SoftwareItem",
+      "type": "object"
+    },
+    "SoftwareScope": {
+      "enum": [
+        "machine",
+        "current_user"
+      ],
+      "title": "SoftwareScope",
+      "type": "string"
+    },
+    "SoftwareSection": {
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/$defs/SoftwareItem"
+          },
+          "title": "Items",
+          "type": "array"
+        },
+        "totalCount": {
+          "minimum": 0,
+          "title": "Totalcount",
+          "type": "integer"
+        },
+        "executableResolvedCount": {
+          "minimum": 0,
+          "title": "Executableresolvedcount",
+          "type": "integer"
+        },
+        "signatureCheckedCount": {
+          "minimum": 0,
+          "title": "Signaturecheckedcount",
+          "type": "integer"
+        },
+        "skippedEntriesWithoutName": {
+          "minimum": 0,
+          "title": "Skippedentrieswithoutname",
+          "type": "integer"
+        },
+        "sources": {
+          "items": {
+            "$ref": "#/$defs/SoftwareSourceReport"
+          },
+          "title": "Sources",
+          "type": "array"
+        },
+        "limitations": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Limitations",
+          "type": "array"
+        }
+      },
+      "required": [
+        "items",
+        "totalCount",
+        "executableResolvedCount",
+        "signatureCheckedCount",
+        "skippedEntriesWithoutName",
+        "sources",
+        "limitations"
+      ],
+      "title": "SoftwareSection",
+      "type": "object"
+    },
+    "SoftwareSourceReport": {
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "title": "Source",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/SoftwareSourceStatus"
+        },
+        "itemCount": {
+          "minimum": 0,
+          "title": "Itemcount",
+          "type": "integer"
+        },
+        "detail": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Detail"
+        }
+      },
+      "required": [
+        "source",
+        "status",
+        "itemCount"
+      ],
+      "title": "SoftwareSourceReport",
+      "type": "object"
+    },
+    "SoftwareSourceStatus": {
+      "enum": [
+        "ok",
+        "not_present",
+        "access_denied",
+        "failed"
+      ],
+      "title": "SoftwareSourceStatus",
+      "type": "string"
+    },
+    "StorageSection": {
+      "additionalProperties": false,
+      "properties": {
+        "disks": {
+          "items": {
+            "$ref": "#/$defs/PhysicalDisk"
+          },
+          "title": "Disks",
+          "type": "array"
+        },
+        "excluded": {
+          "items": {
+            "$ref": "#/$defs/ExcludedDisk"
+          },
+          "title": "Excluded",
+          "type": "array"
+        },
+        "detectionSource": {
+          "title": "Detectionsource",
+          "type": "string"
+        }
+      },
+      "required": [
+        "disks",
+        "excluded",
+        "detectionSource"
+      ],
+      "title": "StorageSection",
+      "type": "object"
+    },
+    "TpmSection": {
+      "additionalProperties": false,
+      "properties": {
+        "present": {
+          "$ref": "#/$defs/Observed_bool_"
+        },
+        "specVersion": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "manufacturer": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "firmwareVersion": {
+          "$ref": "#/$defs/Observed_str_"
+        },
+        "enabled": {
+          "$ref": "#/$defs/Observed_bool_"
+        },
+        "activated": {
+          "$ref": "#/$defs/Observed_bool_"
+        }
+      },
+      "required": [
+        "present",
+        "specVersion",
+        "manufacturer",
+        "firmwareVersion",
+        "enabled",
+        "activated"
+      ],
+      "title": "TpmSection",
+      "type": "object"
+    },
+    "UninstallReference": {
+      "additionalProperties": false,
+      "description": "Referencia informativa. Honey Check nunca la ejecuta.",
+      "properties": {
+        "command": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Command"
+        },
+        "path": {
+          "$ref": "#/$defs/PathEvidence"
+        }
+      },
+      "required": [
+        "command",
+        "path"
+      ],
+      "title": "UninstallReference",
+      "type": "object"
+    },
+    "Volume": {
+      "additionalProperties": false,
+      "properties": {
+        "driveLetter": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Driveletter"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Label"
+        },
+        "fileSystem": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Filesystem"
+        },
+        "sizeBytes": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "freeBytes": {
+          "$ref": "#/$defs/Observed_int_"
+        },
+        "usedBytes": {
+          "$ref": "#/$defs/Observed_int_"
+        }
+      },
+      "required": [
+        "driveLetter",
+        "label",
+        "fileSystem",
+        "sizeBytes",
+        "freeBytes",
+        "usedBytes"
+      ],
+      "title": "Volume",
+      "type": "object"
+    },
+    "VolumeEncryption": {
+      "additionalProperties": false,
+      "properties": {
+        "driveLetter": {
+          "title": "Driveletter",
+          "type": "string"
+        },
+        "protection": {
+          "$ref": "#/$defs/Observed_str_"
+        }
+      },
+      "required": [
+        "driveLetter",
+        "protection"
+      ],
+      "title": "VolumeEncryption",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Una sección nula significa que su módulo falló: el motivo está en `modules` y `errors`.",
+  "properties": {
+    "schema": {
+      "$ref": "#/$defs/SchemaInfo"
+    },
+    "collection": {
+      "$ref": "#/$defs/CollectionInfo"
+    },
+    "device": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/DeviceIdentity"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "hardware": {
+      "$ref": "#/$defs/HardwareSection"
+    },
+    "operatingSystem": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/OperatingSystem"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "software": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/SoftwareSection"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "devices": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/DevicesSection"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "security": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/SecuritySection"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "modules": {
+      "items": {
+        "$ref": "#/$defs/ModuleReport"
+      },
+      "title": "Modules",
+      "type": "array"
+    },
+    "warnings": {
+      "items": {
+        "$ref": "#/$defs/Issue"
+      },
+      "title": "Warnings",
+      "type": "array"
+    },
+    "errors": {
+      "items": {
+        "$ref": "#/$defs/Issue"
+      },
+      "title": "Errors",
+      "type": "array"
+    }
+  },
+  "required": [
+    "collection",
+    "device",
+    "hardware",
+    "operatingSystem",
+    "software",
+    "devices",
+    "security",
+    "modules",
+    "warnings",
+    "errors"
+  ],
+  "title": "Inventory",
+  "type": "object"
+}

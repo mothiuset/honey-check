@@ -1,0 +1,52 @@
+.area {
+  margin: 22px 0;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 14px;
+}
+
+.title {
+  margin: 0;
+}
+
+.count {
+  font-size: 0.85rem;
+}
+
+.count[data-tone='diff'] {
+  color: var(--oxide);
+}
+
+.count[data-tone='ok'] {
+  color: var(--leaf);
+}
+
+.state {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--rule);
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+tr[data-state='changed'] .state {
+  background: var(--honey);
+  color: var(--propolis);
+}
+
+tr[data-state='added'] .state {
+  background: var(--leaf);
+  color: var(--on-strong);
+}
+
+tr[data-state='removed'] .state {
+  background: var(--oxide);
+  color: var(--on-strong);
+}

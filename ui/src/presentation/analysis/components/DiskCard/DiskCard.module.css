@@ -1,0 +1,74 @@
+/* Un disco sin caja: una línea fina lo separa del anterior y la jerarquía la dan los títulos */
+.disk {
+  margin: 8px 0 32px;
+  padding-top: 18px;
+  border-top: 1px solid var(--hairline);
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.title {
+  margin: 0 8px 0 0;
+  font: 600 1.25rem/1.25 var(--readout);
+  font-stretch: var(--readout-stretch);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px 24px;
+  margin: 14px 0 18px;
+}
+
+.facts dt {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.facts dd {
+  margin: 0;
+  font-family: var(--readout);
+  font-stretch: var(--readout-stretch);
+}
+
+/* Cada unidad: su barra y, a la derecha, lo que se puede hacer con ella */
+.volumes {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.volumes > li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 8px 18px;
+}
+
+.actions {
+  display: inline-flex;
+  gap: 8px;
+}
+
+.reserved {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.reserved > summary {
+  cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  .volumes > li {
+    grid-template-columns: 1fr;
+  }
+}

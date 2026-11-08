@@ -1,0 +1,41 @@
+/* Sin caja: los datos se escriben sobre la página, separados del resultado por una línea */
+.form {
+  display: grid;
+  gap: 10px;
+  margin-block: 18px 6px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+}
+
+.fields textarea {
+  width: 100%;
+  font-family: var(--paths);
+  font-size: 0.88rem;
+}
+
+.help {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.missing {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+/* Campo de ruta con su «Elegir…» al lado */
+.browse {
+  display: flex;
+  gap: 8px;
+}
+
+.browse > input {
+  flex: 1;
+  min-width: 0;
+}

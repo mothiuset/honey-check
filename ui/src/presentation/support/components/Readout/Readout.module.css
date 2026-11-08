@@ -1,0 +1,53 @@
+.readout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 44px;
+  margin: 0 0 28px;
+}
+
+.item {
+  min-width: 0;
+}
+
+.item > dt {
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.3;
+}
+
+.item > dd {
+  margin: 2px 0 0;
+  font-family: var(--readout);
+  font-size: 1.45rem;
+  font-stretch: var(--readout-stretch);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.item[data-tone='warn'] > dd {
+  color: var(--warn-ink);
+}
+
+.item[data-tone='bad'] > dd {
+  color: var(--oxide);
+}
+
+/* Rutas y frases largas: su propia línea. La ruta en monoespaciada, partible en cualquier punto */
+.item[data-path],
+.item[data-long] {
+  flex-basis: 100%;
+}
+
+.item[data-long] > dd {
+  font-family: var(--text);
+  font-size: 1rem;
+  font-stretch: normal;
+}
+
+.item[data-path] > dd {
+  font-family: var(--paths);
+  font-size: 0.92rem;
+  font-weight: 400;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}

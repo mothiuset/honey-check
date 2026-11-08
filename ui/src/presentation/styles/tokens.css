@@ -1,0 +1,92 @@
+/* Tokens de diseño de Honey Check: el único dueño de colores, tipografía y medidas compartidas.
+   Riel de miel, tinta de propóleo y superficies limpias. */
+
+:root {
+  color-scheme: light dark;
+
+  /* Primitivos */
+  --honey: #f5b301;
+  --honey-deep: #c98a00;
+  --propolis: #2a1705;
+  --propolis-ink: #f6ebd9;
+  /* Registro de comandos, siempre sobre fondo de propóleo */
+  --log-warn: #ffd27a;
+  --log-error: #ff9d94;
+
+  /* Semánticos */
+  --surface: #ffffff;
+  --surface-alt: #faf7f0;
+  --raised: #ffffff;
+  --wax: #fff4cf;
+  --ink: #2a1705;
+  --muted: #6b5847;
+  --rule: #e8dfd0;
+  --rule-strong: #cdbfa8;
+  /* Separación sin cajas: una línea apenas visible entre filas de lectura */
+  --hairline: rgb(42 23 5 / 11%);
+  --oxide: #a8201a;
+  --oxide-wash: #fdecea;
+  --leaf: #1d7a3e;
+  --leaf-wash: #e7f5ec;
+  --amber-wash: #fff3d6;
+  /* Texto de aviso: la miel no se lee sobre blanco; en claro se oscurece hasta 4,5:1 */
+  --warn-ink: #8a5a00;
+  --focus: #0b57d0;
+  --action-bg: #2a1705;
+  --action-fg: #f5b301;
+  --on-strong: #ffffff;
+  --shadow: 0 1px 2px rgb(42 23 5 / 8%), 0 8px 24px rgb(42 23 5 / 6%);
+  --scrim: rgb(42 23 5 / 45%);
+  /* Barras de desplazamiento: finas y translúcidas, para cualquier fondo claro o de miel */
+  --scroll-thumb: rgb(42 23 5 / 22%);
+  --scroll-thumb-on-dark: rgb(246 235 217 / 28%);
+
+  /* Tipografía */
+  --display:
+    Bahnschrift, 'DIN Alternate', 'Segoe UI Semibold', 'Segoe UI', sans-serif;
+  --text: 'Segoe UI Variable Text', 'Segoe UI', system-ui, sans-serif;
+  --paths: Consolas, 'Cascadia Mono', monospace;
+  /* Cifras de lectura: Bahnschrift semicondensada, como la placa de un instrumento */
+  --readout: Bahnschrift, 'DIN Alternate', 'Segoe UI', sans-serif;
+  --readout-stretch: 87.5%;
+
+  /* Medidas */
+  --radius: 6px;
+  --radius-card: 10px;
+  --status-height: 38px;
+  --bar-height: 0px;
+  --rail-width: 236px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface: #1d1309;
+    --surface-alt: #24180c;
+    --raised: #2a1c0e;
+    --wax: #3a2a12;
+    --ink: #f6ebd9;
+    --muted: #b8a58d;
+    --rule: #41301d;
+    --rule-strong: #5c4630;
+    --hairline: rgb(246 235 217 / 9%);
+    --oxide: #ff8a80;
+    --oxide-wash: #3b1512;
+    --leaf: #7fd69a;
+    --leaf-wash: #12301d;
+    --amber-wash: #3a2c0c;
+    --warn-ink: #f5b301;
+    --focus: #8ab4f8;
+    --action-bg: #f5b301;
+    --action-fg: #2a1705;
+    --on-strong: #1d1309;
+    --shadow: 0 1px 2px rgb(0 0 0 / 30%), 0 8px 24px rgb(0 0 0 / 25%);
+    --scroll-thumb: rgb(246 235 217 / 22%);
+  }
+}
+
+/* Punto de cambio a barra superior compacta (ver App.module.css). */
+@media (max-width: 900px) {
+  :root {
+    --bar-height: 56px;
+  }
+}

@@ -1,0 +1,46 @@
+.spec {
+  margin: 0 0 12px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--raised);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(150px, 240px) minmax(0, 1fr);
+  border-bottom: 1px solid var(--rule);
+}
+
+.row:last-child {
+  border-bottom: 0;
+}
+
+.row > dt,
+.row > dd {
+  margin: 0;
+  padding: 8px 14px;
+}
+
+.row > dt {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.row > dd {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 640px) {
+  .row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .row > dt {
+    padding-bottom: 0;
+    font-size: 0.82rem;
+  }
+
+  .row > dd {
+    padding-top: 2px;
+  }
+}

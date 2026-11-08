@@ -1,0 +1,65 @@
+[project]
+name = "honey-check"
+version = "0.2.0"
+description = "Inventario y diagnóstico técnico local y portable para equipos Windows"
+readme = "README.md"
+requires-python = "==3.12.*"
+dependencies = [
+    "pydantic>=2.9",
+    "starlette>=0.45",
+    "uvicorn>=0.32",
+]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.27",
+    "pillow>=11",
+    "mypy>=1.13",
+    "playwright>=1.49",
+    "pyinstaller>=6.11",
+    "pytest>=8.3",
+    "ruff>=0.8",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/honey_check"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "tests", "tests/e2e", "tests/packaging"]
+addopts = "-ra --strict-markers"
+markers = [
+    "windows_real: consulta el Windows real del equipo donde corre la prueba, sin mocks",
+    "e2e: abre un navegador real instalado en el equipo",
+    "packaging: ejecuta el .exe construido",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "S", "C4", "RET", "SIM", "PTH"]
+ignore = [
+    "S101",   # assert es válido en pruebas
+    "S603",   # los subprocesos se lanzan con rutas absolutas y sin shell
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S105", "S106", "S108", "S310", "S607", "E501"]
+"src/honey_check/infrastructure/windows/powershell.py" = ["E501"]
+# Catálogos de herramientas: descripciones y comandos equivalentes legibles en una línea.
+"src/honey_check/infrastructure/support/tools/*.py" = ["E501"]
+"tools/**" = ["S607", "S310"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["src"]
+plugins = ["pydantic.mypy"]
+

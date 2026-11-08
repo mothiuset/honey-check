@@ -1,0 +1,119 @@
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.row {
+  border-top: 1px solid var(--hairline);
+}
+
+.row:last-child {
+  border-bottom: 1px solid var(--hairline);
+}
+
+/* Nombre | barra | tamaño | porcentaje: las cifras alineadas a la derecha, en columna */
+.line {
+  display: grid;
+  grid-template-columns: minmax(10rem, 1.3fr) minmax(5rem, 2fr) 5.5rem 3.2rem;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  min-width: 0;
+  padding: 9px 4px;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+}
+
+button.line {
+  cursor: pointer;
+}
+
+button.line:hover .title {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+button.line:hover .fill,
+.row[data-expanded] .fill {
+  fill: var(--honey);
+}
+
+/* Elegida: la fila se marca con una línea de miel a la izquierda, sin caja alrededor */
+.row[data-expanded] {
+  box-shadow: inset 3px 0 0 var(--honey);
+}
+
+.row[data-expanded] > .line {
+  padding-left: 12px;
+}
+
+.name {
+  display: grid;
+  min-width: 0;
+}
+
+.title,
+.detail {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+/* Las carpetas en las que se puede entrar llevan la señal de que hay más adentro */
+button.line[data-kind='open'] .title::after {
+  content: ' ›';
+  color: var(--muted);
+}
+
+.bar {
+  width: 100%;
+  height: 8px;
+}
+
+.track {
+  fill: var(--hairline);
+}
+
+.fill {
+  fill: var(--honey-deep);
+}
+
+.value,
+.share {
+  font-family: var(--readout);
+  font-stretch: var(--readout-stretch);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.share {
+  color: var(--muted);
+}
+
+/* Las acciones del elemento elegido, debajo de su fila */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 2px 4px 12px 12px;
+}
+
+@media (max-width: 640px) {
+  .line {
+    grid-template-columns: 1fr 4.6rem 2.8rem;
+  }
+
+  .bar {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+}

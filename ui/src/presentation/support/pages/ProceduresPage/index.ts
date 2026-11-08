@@ -1,0 +1,1 @@
+export { ProceduresPage } from './ProceduresPage'

@@ -1,0 +1,15 @@
+.unknown {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.reason {
+  margin-left: 6px;
+  font-size: 0.8rem;
+  font-style: normal;
+}
+
+.mono {
+  font: 0.86rem/1.4 var(--paths);
+  overflow-wrap: anywhere;
+}

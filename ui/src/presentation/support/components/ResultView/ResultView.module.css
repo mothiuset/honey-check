@@ -1,0 +1,49 @@
+.result {
+  margin-block: 8px 20px;
+}
+
+.result > h2 {
+  margin: 0;
+}
+
+.text {
+  scrollbar-color: var(--scroll-thumb-on-dark) transparent;
+  max-height: 420px;
+  padding: 12px;
+  overflow: auto;
+  border-radius: var(--radius);
+  background: var(--propolis);
+  color: var(--propolis-ink);
+  font-family: var(--paths);
+  font-size: 0.82rem;
+  white-space: pre-wrap;
+}
+
+.files {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.files > li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 2px 12px;
+  padding: 9px 0;
+  border-top: 1px solid var(--hairline);
+}
+
+.files > li > :nth-child(2) {
+  grid-column: 1;
+  color: var(--muted);
+}
+
+.files > li > button {
+  grid-row: 1 / span 2;
+  grid-column: 2;
+}
+
+.fileLabel {
+  font-weight: 600;
+}
