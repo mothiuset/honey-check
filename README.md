@@ -1,4 +1,4 @@
-<p align="center"><img src="docs/assets/honey-check.svg" alt="Honey Check" width="100%"></p>
+<p align="center"><img src="docs/assets/honey-check.svg" alt="Honey Check" width="480"></p>
 
 # Honey Check 🍯
 

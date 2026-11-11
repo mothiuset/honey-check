@@ -8,3 +8,4 @@
 src/honey_check/_build_info.py
 /artifact/
 /src/honey_check/presentation/web/dist/
+__pycache__/

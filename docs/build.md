@@ -46,7 +46,7 @@ de otra compilación.
 
 ## Número de compilación
 
-`tools/build.py` escribe en el `.exe` (`honey_check._build_info`, sin versionar) el número de compilación (`git rev-list --count HEAD`: siempre sube), el commit, la fecha y si había cambios sin commit en `la carpeta del proyecto`. La app lo muestra en el menú lateral («Versión 0.2.0 · compilación 676 · 2a16530 · 2026-11-07») y `tools/publish.py` lo pone en el título de la página de descarga: así se compara de un vistazo si una copia es la última. La app no consulta internet para saberlo.
+`tools/build.py` escribe en el `.exe` (`honey_check._build_info`, sin versionar) el número de compilación (`git rev-list --count HEAD`: siempre sube), el commit, la fecha y si había cambios sin commit en el proyecto. La app lo muestra en el menú lateral («Versión 0.2.0 · compilación 676 · 2a16530 · 2026-11-07») y `tools/publish.py` lo pone en el título de la página de descarga: así se compara de un vistazo si una copia es la última. La app no consulta internet para saberlo.
 
 ## Actualizar solo el ejecutable
 
@@ -68,7 +68,7 @@ compilan, se prueban y se suben desde el equipo del desarrollador; subir archivo
 cuesta nada:
 
 ```powershell
-cd la carpeta del proyecto
+cd D:\Projects\honey-check
 uv run python tools/publish.py               # compila, prueba el .exe y publica
 uv run python tools/publish.py --sin-pruebas # si Honey Check está abierto en este equipo
 ```
