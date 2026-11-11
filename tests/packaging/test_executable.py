@@ -185,7 +185,14 @@ def assert_hardware_collection(inventory: Inventory) -> None:
 
 class TestBundle:
     def test_size_is_reasonable(self, built_exe: Path) -> None:
-        total = sum(path.stat().st_size for path in built_exe.parent.rglob("*") if path.is_file())
+        # HoneyCheck-datos no es parte de la compilación: build.py lo conserva con lo que el
+        # técnico usó (perfil del navegador incluido) y no viaja en el zip publicado.
+        data = built_exe.parent / "HoneyCheck-datos"
+        total = sum(
+            path.stat().st_size
+            for path in built_exe.parent.rglob("*")
+            if path.is_file() and data not in path.parents
+        )
         assert total < 120 * 1024 * 1024
 
     def test_portable_folder_is_complete(self, built_exe: Path) -> None:

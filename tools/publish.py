@@ -160,7 +160,7 @@ def notes(manifest: dict[str, object], previous: str | None) -> str:
         [
             f"## {title(manifest)}",
             "",
-            "Compilación experimental de Honey Check, rama `experiment/honey-check`. "
+            "Compilación experimental de Honey Check, rama `main`. "
             "**No es una versión estable.** La app muestra la misma compilación abajo en el menú "
             "lateral: si el número de la suya es menor, está desactualizada.",
             "",
