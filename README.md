@@ -1,7 +1,5 @@
 <p align="center"><img src="docs/assets/honey-check.svg" alt="Honey Check" width="480"></p>
 
-# Honey Check 🍯
-
 Aplicación portable para Windows que recopila el inventario técnico de un equipo, lo guarda
 versionado por equipo en la carpeta `HoneyCheck-datos` junto al ejecutable, y reúne las
 herramientas de soporte del día a día con revisión previa, respaldo y verificación. Funciona sin
